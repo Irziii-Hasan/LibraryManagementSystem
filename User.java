@@ -4,21 +4,65 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public abstract class User {
+    private static int count =0;
     private int userID;
     private String name;
     private String dept;
     private String userType;
-    private String enrollDate;
-    private String expiryDate;
+    private LocalDate enrollDate;
+    private LocalDate expiryDate;
     private int noOfBookBorrow;
     private int borrowBookLimit;
+    private final int charges= 10;
+    private int paneltyCharges;
 
-    public void setNoOfBookBorrow(int noOfBookBorrow) {
-        this.noOfBookBorrow = noOfBookBorrow;
+
+    public int getCharges() {
+        return charges;
     }
 
-    public int getNoOfBookBorrow() {
-        return noOfBookBorrow;
+
+
+    public int getPaneltyCharges() {
+        return paneltyCharges;
+    }
+
+    public void setPaneltyCharges(int paneltyCharges) {
+        this.paneltyCharges = paneltyCharges;
+    }
+
+
+
+
+    public User(String userType, String name, String dept){
+        this.userType = userType;
+        this.userID = count;
+        count++;
+        this.name = name;
+        this.dept = dept;
+        this.enrollDate = LocalDate.now();
+        this.expiryDate = LocalDate.now().plusYears(1);
+    }
+
+    public abstract void setNoOfBookBorrow(boolean isBorrow);
+
+    public abstract int getNoOfBookBorrow();
+
+    public abstract int getBorrowBookLimit();
+
+    public boolean checkCardValidity(){
+        if (expiryDate.compareTo(LocalDate.now())<0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+    public boolean canBorrowBook(){
+        if (noOfBookBorrow < borrowBookLimit){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     public int getUserID() {
@@ -53,22 +97,13 @@ public abstract class User {
         this.userType = userType;
     }
 
-    public String getEnrollDate() {
+    public LocalDate getEnrollDate() {
         return enrollDate;
     }
 
-    public String getExpiryDate() {
+    public LocalDate getExpiryDate() {
         return expiryDate;
     }
-
-     public User(String userType, int userID, String name, String dept){
-        this.userType = userType;
-         this.userID = userID;
-         this.name = name;
-         this.dept = dept;
-         this.enrollDate = (LocalDate.now()).format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
-         this.expiryDate = (LocalDate.now().plusYears(1)).format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"));;
-     }
 
      public String toString(){
          return "=====  ===  User Details  ===  =====\n" +
@@ -76,9 +111,8 @@ public abstract class User {
                  "ID: "+userID+"\t" + "Name: "+name+"\n" +
                  "Card Valid from: "+enrollDate+"\t" +
                  "to: "+expiryDate+"\n" +
-                 "=====      X==X==X==X==X      =====\n";     }
-
-    public int getBorrowBookLimit() {
-        return borrowBookLimit;
+                 "=====      X==X==X==X==X      =====\n";
     }
+
+
 }
