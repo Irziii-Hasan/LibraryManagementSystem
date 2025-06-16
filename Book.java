@@ -3,14 +3,15 @@ package ConsulnetLibrary;
 import java.util.ArrayList;
 
 public class Book {
-
+    private static int count;
     int id;
     String title;
     String author;
     int quantity;
 
-    public Book(int id, String author, String title, int quantity){
-        this.id = id;
+    public Book(String author, String title, int quantity){
+        this.id = count;
+        count++;
         this.author = author;
         this.title = title;
         this.quantity = quantity;
@@ -21,19 +22,13 @@ public class Book {
     }
 
 
-    void borrowBook(){
-        quantity+=1;
-    }
-    void returnBook(){
-        quantity-=1;
-    }
     void getBookDetails(){
         System.out.println("Book ID: "+id+ ", Author: "+author+ ", Title: "+title);
 
     }
 
     public String toString(){
-        return "Book ID: "+id+ ", Author: "+author+ ", Title: "+title;
+        return "Book ID: "+id+ ", Author: "+author+ ", Title: "+title+ ", Quantity: "+quantity;
     }
 
 }
