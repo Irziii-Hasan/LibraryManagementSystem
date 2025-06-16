@@ -16,6 +16,12 @@ public class AccountHandler <t extends User> {
         userList.add(userDetail);
     }
 
+    public void showUserAccount(){
+        for (t user : userList){
+            System.out.println(user);
+        }
+    }
+
 
     public void addItem(int userID, int bookID){
         borrowedItems.add(new BorrowedItem(userID,bookID));
