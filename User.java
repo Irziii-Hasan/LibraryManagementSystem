@@ -2,7 +2,6 @@ package ConsulnetLibrary;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Formatter;
 
 public abstract class User {
     private int userID;
@@ -11,7 +10,16 @@ public abstract class User {
     private String userType;
     private String enrollDate;
     private String expiryDate;
+    private int noOfBookBorrow;
+    private int borrowBookLimit;
 
+    public void setNoOfBookBorrow(int noOfBookBorrow) {
+        this.noOfBookBorrow = noOfBookBorrow;
+    }
+
+    public int getNoOfBookBorrow() {
+        return noOfBookBorrow;
+    }
 
     public int getUserID() {
         return userID;
@@ -53,7 +61,7 @@ public abstract class User {
         return expiryDate;
     }
 
-     void enrollUser(String userType, int userID, String name, String dept){
+     public User(String userType, int userID, String name, String dept){
         this.userType = userType;
          this.userID = userID;
          this.name = name;
@@ -69,4 +77,8 @@ public abstract class User {
                  "Card Valid from: "+enrollDate+"\t" +
                  "to: "+expiryDate+"\n" +
                  "=====      X==X==X==X==X      =====\n";     }
+
+    public int getBorrowBookLimit() {
+        return borrowBookLimit;
+    }
 }
