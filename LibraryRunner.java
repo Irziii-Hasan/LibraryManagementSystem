@@ -67,7 +67,8 @@ public class LibraryRunner{
 
 
             studentAccountHandler.addAccount(new Student("Student","Irza", "SE"));
-            studentAccountHandler.addAccount(new Student("Student","Sara", "SE"));
+            Student x =new Student("Student","Sara", "SE");
+                    studentAccountHandler.addAccount(x);
             studentAccountHandler.addAccount(new Student("Student","Ayesha", "SE"));
 
             System.out.println();
@@ -81,14 +82,12 @@ public class LibraryRunner{
             teacherAccountHandler.addAccount(new Teacher("Student","Fatima", "SE"));
 
             System.out.println();
-            for (Student student : studentAccountHandler.userList) {
-                System.out.println(student);
-            }
+            studentAccountHandler.showUserAccount();
+            System.out.println();
 
             System.out.println("Enter user ID: ");
             int userid = scanner.nextInt();
             System.out.println();
-
 
 
             bookInventory.showAvailableBook();
@@ -110,6 +109,10 @@ public class LibraryRunner{
 
 
             bookInventory.showAvailableBook();
+
+            if(x.checkCardValidity()){
+                System.out.println( x.getUserID());
+            }
 
             studentAccountHandler.calucaltePanelty(userid,bookid);
 //            studentAccountHandler.deleteItem();
