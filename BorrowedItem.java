@@ -28,4 +28,8 @@ public class BorrowedItem {
         return userID;
     }
 
+    public String toString(){
+        return userID+" "+bookID+" "+borrowDate;
+    }
+
 }
