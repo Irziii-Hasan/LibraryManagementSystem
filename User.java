@@ -51,7 +51,7 @@ public abstract class User {
     public abstract int getBorrowBookLimit();
 
     public boolean checkCardValidity(){
-        if (expiryDate.compareTo(LocalDate.now())<0){
+        if (expiryDate.isAfter(LocalDate.now())){
             return true;
         }else {
             return false;
