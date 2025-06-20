@@ -1,7 +1,6 @@
 package ConsulnetLibrary;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public abstract class User {
     private static int count =0;
@@ -9,26 +8,26 @@ public abstract class User {
     private String name;
     private String dept;
     private String userType;
-    private LocalDate enrollDate;
-    private LocalDate expiryDate;
+    private final LocalDate enrollDate;
+    private final LocalDate expiryDate;
     private int noOfBookBorrow;
     private int borrowBookLimit;
-    private final int charges= 10;
-    private int paneltyCharges;
+    private final int penaltyAmount = 10;
+    private int penaltyCharges;
 
 
-    public int getCharges() {
-        return charges;
+    protected int getPenaltyAmount() {
+        return penaltyAmount;
     }
 
 
 
-    public int getPaneltyCharges() {
-        return paneltyCharges;
+    public int getPenaltyCharges() {
+        return penaltyCharges;
     }
 
-    public void setPaneltyCharges(int paneltyCharges) {
-        this.paneltyCharges = paneltyCharges;
+    public void setPenaltyCharges(int penaltyCharges) {
+        this.penaltyCharges = penaltyCharges;
     }
 
 

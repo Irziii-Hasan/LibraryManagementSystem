@@ -68,7 +68,7 @@ public class LibraryRunner{
 
             studentAccountHandler.addAccount(new Student("Student","Irza", "SE"));
             Student x =new Student("Student","Sara", "SE");
-                    studentAccountHandler.addAccount(x);
+            studentAccountHandler.addAccount(x);
             studentAccountHandler.addAccount(new Student("Student","Ayesha", "SE"));
 
             System.out.println();
@@ -82,7 +82,10 @@ public class LibraryRunner{
             teacherAccountHandler.addAccount(new Teacher("Student","Fatima", "SE"));
 
             System.out.println();
-            studentAccountHandler.showUserAccount();
+            teacherAccountHandler.showUserAccount();
+            for (Teacher teacher : teacherAccountHandler.userList) {
+                System.out.println(teacher);
+            }
             System.out.println();
 
             System.out.println("Enter user ID: ");
@@ -97,13 +100,13 @@ public class LibraryRunner{
             if(bookInventory.bookAvailability(bookid)){
                 bookInventory.borrowBook(bookid);
                 studentAccountHandler.addItem(userid,bookid);
-
+            }else {
+                System.out.println("no book available of ID: "+bookid);
             }
 
             for (BorrowedItem borrowedItem : studentAccountHandler.borrowedItems) {
                 System.out.println(borrowedItem);
             }
-
 
             System.out.println();
 
@@ -114,7 +117,10 @@ public class LibraryRunner{
                 System.out.println( x.getUserID());
             }
 
-            studentAccountHandler.calucaltePanelty(userid,bookid);
+            studentAccountHandler.calculatePenalty(userid,bookid);
+            studentAccountHandler.showBorrowedItem(userid);
+//            System.out.println(x.getPenaltyCharges());
+
 //            studentAccountHandler.deleteItem();
 
 //        AccountHandler<Student> studentAccountHandler1 = new AccountHandler<>();
@@ -140,6 +146,7 @@ public class LibraryRunner{
 
         bookInventory.showAvailableBook();
 
+            System.out.println();
 
 //        for (Object e: accountHandler.userList){
 //            System.out.println(e);

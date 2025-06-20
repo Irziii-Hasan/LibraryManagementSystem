@@ -5,9 +5,9 @@ import java.time.format.DateTimeFormatter;
 
 public class BorrowedItem {
     private static int recordID = 0;
-    private int userID;
-    private  int bookID;
-    private LocalDate borrowDate;
+    private final int userID;
+    private final int bookID;
+    private final LocalDate borrowDate;
 
     public BorrowedItem(int userID, int bookID){
         recordID+=1;
@@ -28,8 +28,12 @@ public class BorrowedItem {
         return userID;
     }
 
-    public String toString(){
-        return userID+" "+bookID+" "+borrowDate;
+    @Override
+    public String toString() {
+        return "BorrowedItem{" +
+                "userID=" + userID +
+                ", bookID=" + bookID +
+                ", borrowDate=" + borrowDate +
+                '}';
     }
-
 }
