@@ -1,5 +1,5 @@
 package ConsulnetLibrary;
 
-public interface Panelty {
+public interface Penalty {
 
 }
