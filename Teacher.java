@@ -11,17 +11,23 @@ public class Teacher extends User{
 
     @Override
     public void setNoOfBookBorrow(boolean isBorrow) {
-
+        if (isBorrow){
+            noOfBookBorrow+=1;
+        }
+        else {
+            noOfBookBorrow-=1;
+        }
     }
 
     @Override
     public int getNoOfBookBorrow() {
-        return 0;
+        return noOfBookBorrow;
     }
+
 
     @Override
     public int getBorrowBookLimit() {
-        return 0;
+        return borrowBookLimit;
     }
 
     public Teacher(String userType, String name, String dept) {
